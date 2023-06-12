@@ -9,14 +9,14 @@ USERS_CSV_PATH = "/Users/parsa/Documents/Uni/Fall 1401/CodeKnock/Registrations/S
 # USERS_CSV_PATH = "/Users/parsa/Library/Application Support/JetBrains/PyCharmCE2023.1/scratches/s.json"
 
 
-def send_mail(*, subject, template_path):
+def send_mail(*, subject, template_path, users_file=USERS_CSV_PATH):
     message_template = open(template_path, "r").read()
     logging.basicConfig(filename="log.txt", level=logging.DEBUG)
 
-    logging.info(f"users file: {USERS_CSV_PATH}")
-    print(f"users file: {USERS_CSV_PATH}")
+    logging.info(f"users file: {users_file}")
+    print(f"users file: {users_file}")
 
-    with open(USERS_CSV_PATH, "r") as csv_file:
+    with open(users_file, "r") as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
         header, *rows = [line for line in csv_reader]
 
