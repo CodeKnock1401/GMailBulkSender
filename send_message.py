@@ -8,6 +8,7 @@ from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 
+import config
 import util
 
 SCOPES = ['https://mail.google.com/']
@@ -39,7 +40,7 @@ def send_message(to: str, subject: str, body: str):
     message = MIMEText(body, "html", "utf-8")
 
     message['To'] = to
-    message['From'] = 'CodeKnock 1401 <codeknock1401@gmail.com>'
+    message['From'] = config.from_address
     message['Subject'] = subject
 
     # encoded message
